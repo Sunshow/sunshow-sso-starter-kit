@@ -17,7 +17,7 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
         http
                 .requestMatchers().antMatchers("/api/**")
                 .and().authorizeRequests()
-                .antMatchers("/api/**").access("#oauth2.hasScope('resource:read')");
+                .antMatchers("/api/**").authenticated();//.access("#oauth2.hasScope('resource:read')");
         ;
     }
 

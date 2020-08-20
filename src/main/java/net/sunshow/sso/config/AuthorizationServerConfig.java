@@ -20,8 +20,8 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
     @Override
     public void configure(AuthorizationServerSecurityConfigurer oauthServer) throws Exception {
         oauthServer.tokenKeyAccess("permitAll()")
-                //.checkTokenAccess("isAuthenticated()")
-                .checkTokenAccess("permitAll()")
+                .checkTokenAccess("isAuthenticated()")
+                //.checkTokenAccess("permitAll()")
                 .allowFormAuthenticationForClients();
     }
 
@@ -30,11 +30,11 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
         clients
                 .inMemory()
-                .withClient("first-client")
-                .secret(passwordEncoder().encode("noonewilleverguess"))
+                .withClient("test_client")
+                .secret(passwordEncoder().encode("client_password"))
                 .scopes("resource:read")
                 .authorizedGrantTypes("authorization_code")
                 .autoApprove(true)
-                .redirectUris("http://localhost:8091/login/oauth2/code/first-client", "xxx");
+                .redirectUris("http://localhost:8091/login/oauth2/code/first-client", "test");
     }
 }
